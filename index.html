@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <title>Odin Landing Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="padding-container">
+      <div class="top width-container barlow">
+        <div class="left-side">
+          <h2>Landing Page</h2>
+        </div>
+        <div class="right-side">
+          <div class="menu fw-600" id="menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="plan.html">Create Your Plan</a>
+          </div>
+          <div class="nav-icon">
+            <i class="fa fa-bars" id="bar-icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="section-1 padding-container">
+      <div class="width-container">
+        <div class="left">
+          <h1>This Website is Awesome</h1>
+          <p>This is the greatest website ever!! I love everyone</p>
+          <button>Sign up</button>
+        </div>
+        <div class="right">
+          <img src="./images/jack-atkinson-QMx15QE-6lM-unsplash.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section-2 padding-container">
+      <div class="width-container">
+        <h2>Some Random Information</h2>
+        <div class="cards">
+          <div class="card">
+            <img src="./images/ambroise-nicolao-zK9O6EzP1Lw-unsplash.jpg" alt="" />
+            <p>Some type of description</p>
+          </div>
+          <div class="card">
+            <img src="./images/ambroise-nicolao-zK9O6EzP1Lw-unsplash.jpg" alt="" />
+            <p>Some type of description</p>
+          </div>
+          <div class="card">
+            <img src="./images/ambroise-nicolao-zK9O6EzP1Lw-unsplash.jpg" alt="" />
+            <p>Some type of description</p>
+          </div>
+          <div class="card">
+            <img src="./images/ambroise-nicolao-zK9O6EzP1Lw-unsplash.jpg" alt="" />
+            <p>Some type of description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-3 padding-container">
+
+      <div class="width-container">
+        <p class = "quote">When something is important enough, you do it even if the odds are not in your favor.</p>
+        <p class= "author fw-700">-Elon Musk</p>
+      </div>
+
+    </div>
+    <div class="section-4 padding-container">
+      <div class="width-container">
+        <div class="call-to-action">
+          <div class="description">
+            <h3>Call to action! It's time</h3>
+            <p>Sign up for our product by clicking that button right over there!</p>
+          </div>
+          <div class="sign-up">
+            <button class = "cta-button">Sign up</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Copyright <span>&#169</span> The Odin project <span id ="year"></span></p>
+    </footer>
+
+    <script>
+      // this is how we make our mobile menu
+      var bars = document.getElementById("bar-icon");
+      var menu = document.getElementById("menu");
+
+      const Year = new Date().getFullYear(); 
+      document.getElementById("year").innerHTML= Year
+
+      function disableScroll() {
+        // Get the current page scroll position
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        (scrollLeft = window.pageXOffset || document.documentElement.scrollLeft),
+          // if any scroll is attempted,
+          // set this to the previous value
+          (window.onscroll = function () {
+            window.scrollTo(scrollLeft, scrollTop);
+          });
+      }
+
+      function enableScroll() {
+        window.onscroll = function () {};
+      }
+      function checkMobileMenu() {
+        if (menu.classList.contains("display-show")) {
+          disableScroll();
+          bars.classList.remove("fa-bars");
+          bars.classList.add("fa-times");
+        } else {
+          enableScroll();
+          bars.classList.remove("fa-times");
+          bars.classList.add("fa-bars");
+        }
+      }
+
+      bars.addEventListener("click", function () {
+        menu.classList.toggle("display-show");
+        checkMobileMenu();
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 576) {
+          menu.classList.remove("display-show");
+          enableScroll();
+        } else if (window.innerWidth < 576) {
+          checkMobileMenu();
+        }
+      });
+    </script>
+  </body>
+</html>
